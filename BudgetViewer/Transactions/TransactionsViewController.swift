@@ -13,14 +13,13 @@ class TransactionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         
-        view.isUserInteractionEnabled = true
-        
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(testAction)))
+        setupNavigationBar()
     }
     
-    @objc private func testAction() {
-        viewModel.goToAddTransaction()
+    private func setupNavigationBar() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = CoreDataManager.shared.getMainAccount()?.name
     }
 }

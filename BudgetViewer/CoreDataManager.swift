@@ -31,7 +31,6 @@ class CoreDataManager {
     }()
     
     func saveContext() {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -43,11 +42,8 @@ class CoreDataManager {
     }
     
     func createAccountIfNotExist() {
-        let request: NSFetchRequest<Account> = Account.fetchRequest()
-        if let accounts = try? context.fetch(request) {
-            if accounts.count > 0 {
-                return
-            }
+        if getMainAccount() != nil {
+            return
         }
         
         let account = Account(context: context)
@@ -55,6 +51,18 @@ class CoreDataManager {
         account.name = "Main Account"
         
         saveContext()
+    }
+    
+    func getMainAccount() -> Account? {
+        let request: NSFetchRequest<Account> = Account.fetchRequest()
+        
+        if let results = try? context.fetch(request) {
+            if let account = results.first {
+                return account
+            }
+        }
+        
+        return nil
     }
     
 }
