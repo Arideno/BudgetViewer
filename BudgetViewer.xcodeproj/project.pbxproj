@@ -12,6 +12,10 @@
 		3175D0C825F2B97F00B0AE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3175D0C725F2B97F00B0AE2D /* Assets.xcassets */; };
 		3175D0CB25F2B97F00B0AE2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3175D0C925F2B97F00B0AE2D /* LaunchScreen.storyboard */; };
 		3175D0D425F2BAD900B0AE2D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3175D0D325F2BAD900B0AE2D /* CoreDataManager.swift */; };
+		31AC83E325F2BD2D009C541C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC83E225F2BD2D009C541C /* Coordinator.swift */; };
+		31AC83E725F2BD65009C541C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC83E625F2BD65009C541C /* AppCoordinator.swift */; };
+		31AC83EA25F2BDD1009C541C /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC83E925F2BDD1009C541C /* TransactionsViewController.swift */; };
+		31AC83ED25F2BDFE009C541C /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC83EC25F2BDFE009C541C /* TransactionsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		3175D0CA25F2B97F00B0AE2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3175D0CC25F2B97F00B0AE2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3175D0D325F2BAD900B0AE2D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		31AC83E225F2BD2D009C541C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		31AC83E625F2BD65009C541C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		31AC83E925F2BDD1009C541C /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		31AC83EC25F2BDFE009C541C /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,26 @@
 		3175D0BA25F2B97B00B0AE2D /* BudgetViewer */ = {
 			isa = PBXGroup;
 			children = (
+				31AC83E125F2BD16009C541C /* Protocols */,
 				3175D0BB25F2B97B00B0AE2D /* AppDelegate.swift */,
 				3175D0C725F2B97F00B0AE2D /* Assets.xcassets */,
 				3175D0C925F2B97F00B0AE2D /* LaunchScreen.storyboard */,
 				3175D0CC25F2B97F00B0AE2D /* Info.plist */,
 				3175D0C425F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld */,
 				3175D0D325F2BAD900B0AE2D /* CoreDataManager.swift */,
+				31AC83E625F2BD65009C541C /* AppCoordinator.swift */,
+				31AC83E925F2BDD1009C541C /* TransactionsViewController.swift */,
+				31AC83EC25F2BDFE009C541C /* TransactionsViewModel.swift */,
 			);
 			path = BudgetViewer;
+			sourceTree = "<group>";
+		};
+		31AC83E125F2BD16009C541C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				31AC83E225F2BD2D009C541C /* Coordinator.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,8 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AC83E325F2BD2D009C541C /* Coordinator.swift in Sources */,
 				3175D0BC25F2B97B00B0AE2D /* AppDelegate.swift in Sources */,
+				31AC83EA25F2BDD1009C541C /* TransactionsViewController.swift in Sources */,
+				31AC83E725F2BD65009C541C /* AppCoordinator.swift in Sources */,
 				3175D0C625F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld in Sources */,
+				31AC83ED25F2BDFE009C541C /* TransactionsViewModel.swift in Sources */,
 				3175D0D425F2BAD900B0AE2D /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
