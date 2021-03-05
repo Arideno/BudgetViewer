@@ -20,6 +20,10 @@
 		31DEB32D25F2C3F000537757 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB32C25F2C3F000537757 /* AddTransactionViewController.swift */; };
 		31DEB33025F2C40F00537757 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB32F25F2C40F00537757 /* AddTransactionViewModel.swift */; };
 		31DEB33325F2C42000537757 /* AddTransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */; };
+		31DEB33A25F2CE6600537757 /* Account+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB33625F2CE6600537757 /* Account+CoreDataClass.swift */; };
+		31DEB33B25F2CE6600537757 /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB33725F2CE6600537757 /* Account+CoreDataProperties.swift */; };
+		31DEB33C25F2CE6600537757 /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB33825F2CE6600537757 /* Transaction+CoreDataClass.swift */; };
+		31DEB33D25F2CE6600537757 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB33925F2CE6600537757 /* Transaction+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		31DEB32C25F2C3F000537757 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		31DEB32F25F2C40F00537757 /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCoordinator.swift; sourceTree = "<group>"; };
+		31DEB33625F2CE6600537757 /* Account+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataClass.swift"; sourceTree = "<group>"; };
+		31DEB33725F2CE6600537757 /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		31DEB33825F2CE6600537757 /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		31DEB33925F2CE6600537757 /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,7 @@
 		3175D0BA25F2B97B00B0AE2D /* BudgetViewer */ = {
 			isa = PBXGroup;
 			children = (
+				31DEB33F25F2CEA700537757 /* Models */,
 				317EC4C925F2C3BD000977B2 /* AddTransaction */,
 				317EC4C825F2C3B1000977B2 /* Transactions */,
 				31AC83E125F2BD16009C541C /* Protocols */,
@@ -110,6 +119,17 @@
 				31AC83E225F2BD2D009C541C /* Coordinator.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		31DEB33F25F2CEA700537757 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				31DEB33625F2CE6600537757 /* Account+CoreDataClass.swift */,
+				31DEB33725F2CE6600537757 /* Account+CoreDataProperties.swift */,
+				31DEB33825F2CE6600537757 /* Transaction+CoreDataClass.swift */,
+				31DEB33925F2CE6600537757 /* Transaction+CoreDataProperties.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,11 +204,15 @@
 				31AC83E325F2BD2D009C541C /* Coordinator.swift in Sources */,
 				3175D0BC25F2B97B00B0AE2D /* AppDelegate.swift in Sources */,
 				31AC83EA25F2BDD1009C541C /* TransactionsViewController.swift in Sources */,
+				31DEB33B25F2CE6600537757 /* Account+CoreDataProperties.swift in Sources */,
 				31DEB33025F2C40F00537757 /* AddTransactionViewModel.swift in Sources */,
+				31DEB33D25F2CE6600537757 /* Transaction+CoreDataProperties.swift in Sources */,
 				31AC83E725F2BD65009C541C /* AppCoordinator.swift in Sources */,
 				3175D0C625F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld in Sources */,
 				31AC83F025F2C220009C541C /* TransactionsCoordinator.swift in Sources */,
+				31DEB33A25F2CE6600537757 /* Account+CoreDataClass.swift in Sources */,
 				31DEB32D25F2C3F000537757 /* AddTransactionViewController.swift in Sources */,
+				31DEB33C25F2CE6600537757 /* Transaction+CoreDataClass.swift in Sources */,
 				31AC83ED25F2BDFE009C541C /* TransactionsViewModel.swift in Sources */,
 				31DEB33325F2C42000537757 /* AddTransactionCoordinator.swift in Sources */,
 				3175D0D425F2BAD900B0AE2D /* CoreDataManager.swift in Sources */,

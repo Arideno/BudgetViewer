@@ -14,6 +14,10 @@ class CoreDataManager {
     
     private init() {}
     
+    lazy var context: NSManagedObjectContext = {
+        return persistentContainer.viewContext
+    }()
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "BudgetViewer")
         
