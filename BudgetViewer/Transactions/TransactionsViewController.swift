@@ -11,15 +11,86 @@ class TransactionsViewController: UIViewController {
     
     var viewModel: TransactionsViewModel!
     
+    let balanceLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .black
+        lbl.font = .preferredFont(forTextStyle: .body)
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
+    
+    lazy var increaseBalanceButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        btn.tintColor = .green
+        btn.addTarget(self, action: #selector(increaseButtonTapped), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         setupNavigationBar()
+        setupViews()
+        setupViewModel()
     }
     
     private func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = CoreDataManager.shared.getMainAccount()?.name
+    }
+    
+    private func setupViews() {
+        view.addSubview(balanceLabel)
+        view.addSubview(increaseBalanceButton)
+        
+        NSLayoutConstraint.activate([
+            balanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            balanceLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            balanceLabel.trailingAnchor.constraint(equalTo: increaseBalanceButton.leadingAnchor, constant: -16),
+            
+            increaseBalanceButton.widthAnchor.constraint(equalToConstant: 40),
+            increaseBalanceButton.heightAnchor.constraint(equalToConstant: 40),
+            increaseBalanceButton.centerYAnchor.constraint(equalTo: balanceLabel.centerYAnchor),
+            increaseBalanceButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+        ])
+    }
+    
+    private func setupViewModel() {
+        viewModel.accountChanged = { [unowned self] in
+            navigationItem.title = viewModel.account.name
+            balanceLabel.text = "Balance: \(viewModel.account.balance ?? 0) BTC"
+        }
+        
+        viewModel.showBalanceIncrease = { [unowned self] in
+            let alert = UIAlertController(title: "Increase balance", message: "Enter amount to increase", preferredStyle: .alert)
+            
+            alert.addTextField { (textField) in
+                textField.placeholder = "Amount"
+                textField.keyboardType = .numbersAndPunctuation
+            }
+
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
+                if let doubleValue = Double(alert.textFields![0].text ?? "") {
+                    viewModel.increaseBalance(amount: doubleValue)
+                    alert.dismiss(animated: true, completion: nil)
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+        
+        viewModel.loadData()
+    }
+    
+    // MARK: Actions
+    
+    @objc private func increaseButtonTapped() {
+        viewModel.goToIcreaseBalance()
     }
 }
