@@ -16,9 +16,8 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let transactionsViewController = TransactionsViewController()
-        let transactionsViewModel = TransactionsViewModel()
-        transactionsViewController.viewModel = transactionsViewModel
-        navigationController.pushViewController(transactionsViewController, animated: true)
+        let transactionsCoordinator = TransactionsCoordinator(navigationController: navigationController)
+        childCoordinators.append(transactionsCoordinator)
+        transactionsCoordinator.start()
     }
 }

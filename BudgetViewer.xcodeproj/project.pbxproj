@@ -16,6 +16,10 @@
 		31AC83E725F2BD65009C541C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC83E625F2BD65009C541C /* AppCoordinator.swift */; };
 		31AC83EA25F2BDD1009C541C /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC83E925F2BDD1009C541C /* TransactionsViewController.swift */; };
 		31AC83ED25F2BDFE009C541C /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC83EC25F2BDFE009C541C /* TransactionsViewModel.swift */; };
+		31AC83F025F2C220009C541C /* TransactionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC83EF25F2C220009C541C /* TransactionsCoordinator.swift */; };
+		31DEB32D25F2C3F000537757 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB32C25F2C3F000537757 /* AddTransactionViewController.swift */; };
+		31DEB33025F2C40F00537757 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB32F25F2C40F00537757 /* AddTransactionViewModel.swift */; };
+		31DEB33325F2C42000537757 /* AddTransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		31AC83E625F2BD65009C541C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		31AC83E925F2BDD1009C541C /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		31AC83EC25F2BDFE009C541C /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
+		31AC83EF25F2C220009C541C /* TransactionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsCoordinator.swift; sourceTree = "<group>"; };
+		31DEB32C25F2C3F000537757 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		31DEB32F25F2C40F00537757 /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
+		31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,8 @@
 		3175D0BA25F2B97B00B0AE2D /* BudgetViewer */ = {
 			isa = PBXGroup;
 			children = (
+				317EC4C925F2C3BD000977B2 /* AddTransaction */,
+				317EC4C825F2C3B1000977B2 /* Transactions */,
 				31AC83E125F2BD16009C541C /* Protocols */,
 				3175D0BB25F2B97B00B0AE2D /* AppDelegate.swift */,
 				3175D0C725F2B97F00B0AE2D /* Assets.xcassets */,
@@ -70,10 +80,28 @@
 				3175D0C425F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld */,
 				3175D0D325F2BAD900B0AE2D /* CoreDataManager.swift */,
 				31AC83E625F2BD65009C541C /* AppCoordinator.swift */,
+			);
+			path = BudgetViewer;
+			sourceTree = "<group>";
+		};
+		317EC4C825F2C3B1000977B2 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				31AC83EF25F2C220009C541C /* TransactionsCoordinator.swift */,
 				31AC83E925F2BDD1009C541C /* TransactionsViewController.swift */,
 				31AC83EC25F2BDFE009C541C /* TransactionsViewModel.swift */,
 			);
-			path = BudgetViewer;
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		317EC4C925F2C3BD000977B2 /* AddTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				31DEB32C25F2C3F000537757 /* AddTransactionViewController.swift */,
+				31DEB32F25F2C40F00537757 /* AddTransactionViewModel.swift */,
+				31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */,
+			);
+			path = AddTransaction;
 			sourceTree = "<group>";
 		};
 		31AC83E125F2BD16009C541C /* Protocols */ = {
@@ -156,9 +184,13 @@
 				31AC83E325F2BD2D009C541C /* Coordinator.swift in Sources */,
 				3175D0BC25F2B97B00B0AE2D /* AppDelegate.swift in Sources */,
 				31AC83EA25F2BDD1009C541C /* TransactionsViewController.swift in Sources */,
+				31DEB33025F2C40F00537757 /* AddTransactionViewModel.swift in Sources */,
 				31AC83E725F2BD65009C541C /* AppCoordinator.swift in Sources */,
 				3175D0C625F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld in Sources */,
+				31AC83F025F2C220009C541C /* TransactionsCoordinator.swift in Sources */,
+				31DEB32D25F2C3F000537757 /* AddTransactionViewController.swift in Sources */,
 				31AC83ED25F2BDFE009C541C /* TransactionsViewModel.swift in Sources */,
+				31DEB33325F2C42000537757 /* AddTransactionCoordinator.swift in Sources */,
 				3175D0D425F2BAD900B0AE2D /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W25X3836JP;
 				INFOPLIST_FILE = BudgetViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -317,6 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W25X3836JP;
 				INFOPLIST_FILE = BudgetViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

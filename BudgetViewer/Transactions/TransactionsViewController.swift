@@ -14,5 +14,13 @@ class TransactionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+        
+        view.isUserInteractionEnabled = true
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(testAction)))
+    }
+    
+    @objc private func testAction() {
+        viewModel.goToAddTransaction()
     }
 }

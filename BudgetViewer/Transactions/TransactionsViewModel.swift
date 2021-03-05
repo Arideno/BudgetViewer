@@ -8,5 +8,9 @@
 import Foundation
 
 class TransactionsViewModel {
+    weak var coordinator: TransactionsCoordinator?
     
+    func goToAddTransaction() {
+        coordinator?.addTransaction()
+    }
 }
