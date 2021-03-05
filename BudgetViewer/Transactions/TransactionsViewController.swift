@@ -63,6 +63,10 @@ class TransactionsViewController: UIViewController {
             balanceLabel.text = "Balance: \(viewModel.account.balance ?? 0) BTC"
         }
         
+        viewModel.rateChanged = { [unowned self] rate in
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: rate, style: .plain, target: nil, action: nil)
+        }
+        
         viewModel.showBalanceIncrease = { [unowned self] in
             let alert = UIAlertController(title: "Increase balance", message: "Enter amount to increase", preferredStyle: .alert)
             

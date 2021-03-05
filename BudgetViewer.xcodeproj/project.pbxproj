@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31751A6725F2DCE300B17CAC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A6625F2DCE200B17CAC /* Category.swift */; };
+		31751A6B25F2DF5700B17CAC /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A6A25F2DF5700B17CAC /* Urls.swift */; };
+		31751A6E25F2DFFA00B17CAC /* BTCRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A6D25F2DFFA00B17CAC /* BTCRate.swift */; };
 		3175D0BC25F2B97B00B0AE2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3175D0BB25F2B97B00B0AE2D /* AppDelegate.swift */; };
 		3175D0C625F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3175D0C425F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld */; };
 		3175D0C825F2B97F00B0AE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3175D0C725F2B97F00B0AE2D /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31751A6625F2DCE200B17CAC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		31751A6A25F2DF5700B17CAC /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
+		31751A6D25F2DFFA00B17CAC /* BTCRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCRate.swift; sourceTree = "<group>"; };
 		3175D0B825F2B97B00B0AE2D /* BudgetViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3175D0BB25F2B97B00B0AE2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3175D0C525F2B97B00B0AE2D /* BudgetViewer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetViewer.xcdatamodel; sourceTree = "<group>"; };
@@ -59,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31751A6525F2DCDB00B17CAC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				31751A6625F2DCE200B17CAC /* Category.swift */,
+				31751A6A25F2DF5700B17CAC /* Urls.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		3175D0AF25F2B97B00B0AE2D = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +93,7 @@
 		3175D0BA25F2B97B00B0AE2D /* BudgetViewer */ = {
 			isa = PBXGroup;
 			children = (
+				31751A6525F2DCDB00B17CAC /* Constants */,
 				31DEB33F25F2CEA700537757 /* Models */,
 				317EC4C925F2C3BD000977B2 /* AddTransaction */,
 				317EC4C825F2C3B1000977B2 /* Transactions */,
@@ -128,6 +144,7 @@
 				319F0B5425F2D05A006CBD0C /* Account+CoreDataProperties.swift */,
 				319F0B5525F2D05B006CBD0C /* Transaction+CoreDataClass.swift */,
 				319F0B5625F2D05B006CBD0C /* Transaction+CoreDataProperties.swift */,
+				31751A6D25F2DFFA00B17CAC /* BTCRate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,12 +225,15 @@
 				31DEB33025F2C40F00537757 /* AddTransactionViewModel.swift in Sources */,
 				319F0B5A25F2D05B006CBD0C /* Transaction+CoreDataProperties.swift in Sources */,
 				31AC83E725F2BD65009C541C /* AppCoordinator.swift in Sources */,
+				31751A6725F2DCE300B17CAC /* Category.swift in Sources */,
+				31751A6B25F2DF5700B17CAC /* Urls.swift in Sources */,
 				3175D0C625F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld in Sources */,
 				31AC83F025F2C220009C541C /* TransactionsCoordinator.swift in Sources */,
 				319F0B5725F2D05B006CBD0C /* Account+CoreDataClass.swift in Sources */,
 				31DEB32D25F2C3F000537757 /* AddTransactionViewController.swift in Sources */,
 				319F0B5925F2D05B006CBD0C /* Transaction+CoreDataClass.swift in Sources */,
 				31AC83ED25F2BDFE009C541C /* TransactionsViewModel.swift in Sources */,
+				31751A6E25F2DFFA00B17CAC /* BTCRate.swift in Sources */,
 				31DEB33325F2C42000537757 /* AddTransactionCoordinator.swift in Sources */,
 				3175D0D425F2BAD900B0AE2D /* CoreDataManager.swift in Sources */,
 			);
