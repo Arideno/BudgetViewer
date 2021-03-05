@@ -42,4 +42,19 @@ class CoreDataManager {
         }
     }
     
+    func createAccountIfNotExist() {
+        let request: NSFetchRequest<Account> = Account.fetchRequest()
+        if let accounts = try? context.fetch(request) {
+            if accounts.count > 0 {
+                return
+            }
+        }
+        
+        let account = Account(context: context)
+        account.balance = 0
+        account.name = "Main Account"
+        
+        saveContext()
+    }
+    
 }

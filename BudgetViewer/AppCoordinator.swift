@@ -16,6 +16,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
+        CoreDataManager.shared.createAccountIfNotExist()
         let transactionsCoordinator = TransactionsCoordinator(navigationController: navigationController)
         childCoordinators.append(transactionsCoordinator)
         transactionsCoordinator.start()
