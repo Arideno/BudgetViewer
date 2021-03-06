@@ -167,7 +167,9 @@ extension TransactionsViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionTableViewCell.identifier, for: indexPath) as? TransactionTableViewCell else { return UITableViewCell() }
         
-        cell.textLabel?.text = viewModel.transactions[indexPath.row].category
+        let transaction = viewModel.transactions[indexPath.row]
+        
+        cell.fill(transaction: transaction)
         
         return cell
     }
