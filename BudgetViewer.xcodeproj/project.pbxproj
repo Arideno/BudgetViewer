@@ -29,6 +29,7 @@
 		31DEB33325F2C42000537757 /* AddTransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */; };
 		31DFF97C25F37FF5009249CF /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DFF97B25F37FF5009249CF /* TransactionTableViewCell.swift */; };
 		31DFF98025F37FFF009249CF /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DFF97F25F37FFF009249CF /* ReuseIdentifiable.swift */; };
+		31DFF98725F404F6009249CF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DFF98625F404F6009249CF /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCoordinator.swift; sourceTree = "<group>"; };
 		31DFF97B25F37FF5009249CF /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		31DFF97F25F37FFF009249CF /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		31DFF98625F404F6009249CF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				3175D0C425F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld */,
 				3175D0D325F2BAD900B0AE2D /* CoreDataManager.swift */,
 				31AC83E625F2BD65009C541C /* AppCoordinator.swift */,
+				31DFF98625F404F6009249CF /* Utils.swift */,
 			);
 			path = BudgetViewer;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				31DEB32D25F2C3F000537757 /* AddTransactionViewController.swift in Sources */,
 				319F0B5925F2D05B006CBD0C /* Transaction+CoreDataClass.swift in Sources */,
 				31AC83ED25F2BDFE009C541C /* TransactionsViewModel.swift in Sources */,
+				31DFF98725F404F6009249CF /* Utils.swift in Sources */,
 				31751A6E25F2DFFA00B17CAC /* BTCRate.swift in Sources */,
 				31DEB33325F2C42000537757 /* AddTransactionCoordinator.swift in Sources */,
 				3175D0D425F2BAD900B0AE2D /* CoreDataManager.swift in Sources */,

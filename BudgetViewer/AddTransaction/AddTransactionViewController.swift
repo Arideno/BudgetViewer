@@ -109,18 +109,9 @@ extension AddTransactionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text {
             let str = (text as NSString).replacingCharacters(in: range, with: string)
-            if str == "" {
+            if isValidAmount(str) {
+                viewModel.changeAmount(Double(str)!)
                 return true
-            }
-            let doubleVal = Double(str)
-            if doubleVal != nil && doubleVal! <= 1_000_000_000 {
-                let integerString = String(Int(doubleVal!))
-                let doubleString = String(doubleVal!)
-                let decimalCount = doubleString.count - integerString.count - 1
-                if decimalCount <= 6 {
-                    viewModel.changeAmount(doubleVal!)
-                    return true
-                }
             }
         }
         

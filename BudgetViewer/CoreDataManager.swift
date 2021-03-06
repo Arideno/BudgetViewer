@@ -66,11 +66,8 @@ class CoreDataManager {
     }
     
     func increaseBalance(account: Account, amount: Double) {
-        let newBalance = account.balance?.adding(NSDecimalNumber(value: amount))
-        if newBalance?.decimalValue ?? 0 <= 1_000_000_000 && newBalance?.decimalValue ?? 0 >= 0 {
-            account.balance = account.balance?.adding(NSDecimalNumber(value: amount))
-            saveContext()
-        }
+        account.balance = account.balance?.adding(NSDecimalNumber(value: amount))
+        saveContext()
     }
     
     func createTransaction(amount: Double, category: String) {

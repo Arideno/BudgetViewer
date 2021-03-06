@@ -112,6 +112,7 @@ class TransactionsViewController: UIViewController {
             alert.addTextField { (textField) in
                 textField.placeholder = "Amount"
                 textField.keyboardType = .numbersAndPunctuation
+                textField.delegate = self
             }
             
             alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
@@ -187,5 +188,18 @@ extension TransactionsViewController: UITableViewDataSource, UITableViewDelegate
         if distanceFromBottom < height && !viewModel.isLoading {
             viewModel.loadTransactions()
         }
+    }
+}
+
+extension TransactionsViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            let str = (text as NSString).replacingCharacters(in: range, with: string)
+            if isValidAmount(str) {
+                return true
+            }
+        }
+        
+        return false
     }
 }
