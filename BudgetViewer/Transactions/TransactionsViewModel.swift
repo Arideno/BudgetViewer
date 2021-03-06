@@ -36,6 +36,7 @@ class TransactionsViewModel {
     
     func loadTransactions() {
         transactions = CoreDataManager.shared.getAllTransactions()
+        accountChanged?()
         transactionsChanged?()
     }
     

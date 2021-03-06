@@ -81,6 +81,8 @@ class CoreDataManager {
         transaction.uuid = UUID()
         transaction.date = Date()
         
+        transaction.account?.balance = transaction.account?.balance?.subtracting(transaction.amount ?? 0)
+        
         saveContext()
     }
     
