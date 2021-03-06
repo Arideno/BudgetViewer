@@ -11,6 +11,13 @@ class TransactionsViewController: UIViewController {
     
     var viewModel: TransactionsViewModel!
     
+    let numberFormatter: NumberFormatter = {
+        let f = NumberFormatter()
+        f.minimumFractionDigits = 2
+        f.maximumFractionDigits = 6
+        return f
+    }()
+    
     let balanceLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
@@ -60,7 +67,7 @@ class TransactionsViewController: UIViewController {
     private func setupViewModel() {
         viewModel.accountChanged = { [unowned self] in
             navigationItem.title = viewModel.account.name
-            balanceLabel.text = "Balance: \(viewModel.account.balance ?? 0) BTC"
+            balanceLabel.text = "Balance: \(numberFormatter.string(from: viewModel.account.balance ?? 0)!) BTC"
         }
         
         viewModel.rateChanged = { [unowned self] rate in

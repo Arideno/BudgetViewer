@@ -34,6 +34,6 @@ struct BTCRate: Codable {
     var rate: Double {
         let formatter = NumberFormatter()
         formatter.decimalSeparator = "."
-        return formatter.number(from: bpi?.usd?.rate?.replacingOccurrences(of: ",", with: "") ?? "0")?.doubleValue ?? 0
+        return formatter.number(from: bpi?.usd?.rate?.replacingOccurrences(of: ",", with: "") ?? "-1")?.doubleValue ?? -1
     }
 }

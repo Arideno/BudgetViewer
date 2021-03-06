@@ -64,7 +64,11 @@ class TransactionsViewModel {
                     return
                 }
                 DispatchQueue.main.async {
-                    self.rateChanged?("\(btcRate.rate)")
+                    if btcRate.rate == -1 {
+                        self.rateChanged?("No data")
+                    } else {
+                        self.rateChanged?("\(btcRate.rate)")
+                    }
                 }
             }
             task.resume()
