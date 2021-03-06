@@ -35,6 +35,14 @@ class TransactionsViewController: UIViewController {
         return btn
     }()
     
+    lazy var addTransactionButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Add transaction", for: .normal)
+        btn.addTarget(self, action: #selector(addTransactionButtonTapped), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -51,6 +59,7 @@ class TransactionsViewController: UIViewController {
     private func setupViews() {
         view.addSubview(balanceLabel)
         view.addSubview(increaseBalanceButton)
+        view.addSubview(addTransactionButton)
         
         NSLayoutConstraint.activate([
             balanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -60,7 +69,10 @@ class TransactionsViewController: UIViewController {
             increaseBalanceButton.widthAnchor.constraint(equalToConstant: 40),
             increaseBalanceButton.heightAnchor.constraint(equalToConstant: 40),
             increaseBalanceButton.centerYAnchor.constraint(equalTo: balanceLabel.centerYAnchor),
-            increaseBalanceButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            increaseBalanceButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
+            addTransactionButton.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 8),
+            addTransactionButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
     }
     
@@ -103,5 +115,9 @@ class TransactionsViewController: UIViewController {
     
     @objc private func increaseButtonTapped() {
         viewModel.goToIcreaseBalance()
+    }
+    
+    @objc private func addTransactionButtonTapped() {
+        viewModel.goToAddTransaction()
     }
 }

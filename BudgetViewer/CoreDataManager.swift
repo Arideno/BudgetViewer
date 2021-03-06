@@ -73,4 +73,15 @@ class CoreDataManager {
         }
     }
     
+    func createTransaction(amount: Double, category: String) {
+        let transaction = Transaction(context: context)
+        transaction.account = getMainAccount()
+        transaction.category = category
+        transaction.amount = NSDecimalNumber(value: amount)
+        transaction.uuid = UUID()
+        transaction.date = Date()
+        
+        saveContext()
+    }
+    
 }
