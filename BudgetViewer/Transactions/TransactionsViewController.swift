@@ -160,17 +160,32 @@ class TransactionsViewController: UIViewController {
 }
 
 extension TransactionsViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.transactionSections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.transactions.count
+        return viewModel.getTransactionsForDateComponents(viewModel.transactionSections[section]).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionTableViewCell.identifier, for: indexPath) as? TransactionTableViewCell else { return UITableViewCell() }
         
-        let transaction = viewModel.transactions[indexPath.row]
+        let transactions = viewModel.getTransactionsForDateComponents(viewModel.transactionSections[indexPath.section])
+        
+        let transaction = transactions[indexPath.row]
         
         cell.fill(transaction: transaction)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        let date = Calendar.current.date(from: viewModel.transactionSections[section])
+        
+        return dateFormatter.string(from: date ?? Date())
     }
 }

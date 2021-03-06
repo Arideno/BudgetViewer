@@ -90,7 +90,10 @@ class CoreDataManager {
         let request: NSFetchRequest<Transaction> = Transaction.fetchRequest()
         
         if let transactions = try? context.fetch(request) {
-            return transactions
+            return transactions.sorted { (l, r) -> Bool in
+                guard let lDate = l.date, let rDate = r.date else { return false }
+                return lDate.compare(rDate) == .orderedDescending
+            }
         }
         
         return []

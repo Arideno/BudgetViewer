@@ -18,7 +18,8 @@ class TransactionsViewModel {
     var updateRateTimer: Timer?
     
     var account: Account!
-    var transactions: [Transaction] = [Transaction]()
+    var transactions = [Transaction]()
+    var transactionSections = [DateComponents]()
     
     init() {
         requestBTCRate()
@@ -36,6 +37,11 @@ class TransactionsViewModel {
     
     func loadTransactions() {
         transactions = CoreDataManager.shared.getAllTransactions()
+        let dates = transactions.map({ $0.date ?? Date() })
+        let components = Set(dates.map({ Calendar.current.dateComponents([.day, .month, .year], from: $0) })).sorted(by: {
+            Calendar.current.date(from: $0) ?? Date.distantFuture > Calendar.current.date(from: $1) ?? Date.distantFuture
+        })
+        transactionSections = Array(components)
         accountChanged?()
         transactionsChanged?()
     }
@@ -54,6 +60,10 @@ class TransactionsViewModel {
     
     func goToAddTransaction() {
         coordinator?.addTransaction()
+    }
+    
+    func getTransactionsForDateComponents(_ components: DateComponents) -> [Transaction] {
+        return transactions.filter({ Calendar.current.dateComponents([.day, .month, .year], from: $0.date ?? Date()) == components })
     }
     
     @objc private func requestBTCRate() {
