@@ -51,6 +51,8 @@ class TransactionTableViewCell: UITableViewCell, ReuseIdentifiable {
         dateLabel.text = dateFormatter.string(from: transaction.date ?? Date())
     }
     
+    // MARK: Private methods
+    
     private func setupViews() {
         contentView.addSubview(categoryLabel)
         contentView.addSubview(amountLabel)

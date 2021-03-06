@@ -20,9 +20,10 @@ class TransactionsCoordinator: NSObject, Coordinator {
     func start() {
         navigationController.delegate = self
         let transactionsViewController = TransactionsViewController()
-        transactionsViewModel = TransactionsViewModel()
+        let transactionsViewModel = TransactionsViewModel()
         transactionsViewModel.coordinator = self
         transactionsViewController.viewModel = transactionsViewModel
+        self.transactionsViewModel = transactionsViewModel
         navigationController.pushViewController(transactionsViewController, animated: true)
     }
     

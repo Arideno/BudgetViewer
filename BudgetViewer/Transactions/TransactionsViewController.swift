@@ -11,6 +11,8 @@ class TransactionsViewController: UIViewController {
     
     var viewModel: TransactionsViewModel!
     
+    // MARK: Properties
+    
     let numberFormatter: NumberFormatter = {
         let f = NumberFormatter()
         f.minimumFractionDigits = 2
@@ -60,6 +62,8 @@ class TransactionsViewController: UIViewController {
         setupTableView()
         setupViewModel()
     }
+    
+    // MARK: Private Methods
     
     private func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never

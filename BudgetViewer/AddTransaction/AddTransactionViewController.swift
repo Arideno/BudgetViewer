@@ -11,6 +11,8 @@ class AddTransactionViewController: UIViewController {
     
     var viewModel: AddTransactionViewModel!
     
+    // MARK: Properties
+    
     let amountLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Enter amount:"
@@ -61,6 +63,8 @@ class AddTransactionViewController: UIViewController {
         setupViews()
         setupViewModel()
     }
+    
+    // MARK: Private methods
     
     private func setupNavigationBar() {
         navigationItem.title = "Add transaction"
