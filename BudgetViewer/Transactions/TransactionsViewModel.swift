@@ -11,12 +11,14 @@ class TransactionsViewModel {
     weak var coordinator: TransactionsCoordinator?
     
     var accountChanged: (() -> ())?
+    var transactionsChanged: (() -> ())?
     var rateChanged: ((String) -> ())?
     var showBalanceIncrease: (() -> ())?
     
     var updateRateTimer: Timer?
     
     var account: Account!
+    var transactions: [Transaction] = [Transaction]()
     
     init() {
         requestBTCRate()
@@ -27,9 +29,14 @@ class TransactionsViewModel {
         updateRateTimer?.invalidate()
     }
     
-    func loadData() {
+    func loadAccount() {
         account = CoreDataManager.shared.getMainAccount()
         accountChanged?()
+    }
+    
+    func loadTransactions() {
+        transactions = CoreDataManager.shared.getAllTransactions()
+        transactionsChanged?()
     }
     
     func increaseBalance(amount: Double) {

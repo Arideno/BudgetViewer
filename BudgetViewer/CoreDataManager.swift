@@ -84,4 +84,14 @@ class CoreDataManager {
         saveContext()
     }
     
+    func getAllTransactions() -> [Transaction] {
+        let request: NSFetchRequest<Transaction> = Transaction.fetchRequest()
+        
+        if let transactions = try? context.fetch(request) {
+            return transactions
+        }
+        
+        return []
+    }
+    
 }

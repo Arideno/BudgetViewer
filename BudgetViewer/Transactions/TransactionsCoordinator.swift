@@ -11,6 +11,8 @@ class TransactionsCoordinator: NSObject, Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
+    weak var transactionsViewModel: TransactionsViewModel!
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -18,7 +20,7 @@ class TransactionsCoordinator: NSObject, Coordinator {
     func start() {
         navigationController.delegate = self
         let transactionsViewController = TransactionsViewController()
-        let transactionsViewModel = TransactionsViewModel()
+        transactionsViewModel = TransactionsViewModel()
         transactionsViewModel.coordinator = self
         transactionsViewController.viewModel = transactionsViewModel
         navigationController.pushViewController(transactionsViewController, animated: true)
@@ -51,6 +53,7 @@ extension TransactionsCoordinator: UINavigationControllerDelegate {
         }
         
         if let addTransactionViewController = fromViewController as? AddTransactionViewController {
+            transactionsViewModel.loadTransactions()
             childDidFinish(addTransactionViewController.viewModel.coordinator)
         }
     }

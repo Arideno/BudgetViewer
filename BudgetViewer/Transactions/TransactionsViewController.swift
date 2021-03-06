@@ -43,12 +43,27 @@ class TransactionsViewController: UIViewController {
         return btn
     }()
     
+    lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.delegate = self
+        tv.dataSource = self
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        return rc
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         setupNavigationBar()
         setupViews()
+        setupTableView()
         setupViewModel()
     }
     
@@ -60,6 +75,7 @@ class TransactionsViewController: UIViewController {
         view.addSubview(balanceLabel)
         view.addSubview(increaseBalanceButton)
         view.addSubview(addTransactionButton)
+        view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
             balanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -72,7 +88,12 @@ class TransactionsViewController: UIViewController {
             increaseBalanceButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
             addTransactionButton.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 8),
-            addTransactionButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+            addTransactionButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: addTransactionButton.bottomAnchor, constant: 16),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -80,6 +101,11 @@ class TransactionsViewController: UIViewController {
         viewModel.accountChanged = { [unowned self] in
             navigationItem.title = viewModel.account.name
             balanceLabel.text = "Balance: \(numberFormatter.string(from: viewModel.account.balance ?? 0)!) BTC"
+        }
+        
+        viewModel.transactionsChanged = { [unowned self] in
+            tableView.reloadData()
+            tableView.refreshControl?.endRefreshing()
         }
         
         viewModel.rateChanged = { [unowned self] rate in
@@ -108,7 +134,14 @@ class TransactionsViewController: UIViewController {
             present(alert, animated: true, completion: nil)
         }
         
-        viewModel.loadData()
+        viewModel.loadAccount()
+        viewModel.loadTransactions()
+    }
+    
+    private func setupTableView() {
+        tableView.register(TransactionTableViewCell.self, forCellReuseIdentifier: TransactionTableViewCell.identifier)
+        
+        tableView.refreshControl = refreshControl
     }
     
     // MARK: Actions
@@ -119,5 +152,23 @@ class TransactionsViewController: UIViewController {
     
     @objc private func addTransactionButtonTapped() {
         viewModel.goToAddTransaction()
+    }
+    
+    @objc private func refreshData() {
+        viewModel.loadTransactions()
+    }
+}
+
+extension TransactionsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.transactions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionTableViewCell.identifier, for: indexPath) as? TransactionTableViewCell else { return UITableViewCell() }
+        
+        cell.textLabel?.text = viewModel.transactions[indexPath.row].category
+        
+        return cell
     }
 }

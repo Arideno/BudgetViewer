@@ -27,6 +27,8 @@
 		31DEB32D25F2C3F000537757 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB32C25F2C3F000537757 /* AddTransactionViewController.swift */; };
 		31DEB33025F2C40F00537757 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB32F25F2C40F00537757 /* AddTransactionViewModel.swift */; };
 		31DEB33325F2C42000537757 /* AddTransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */; };
+		31DFF97C25F37FF5009249CF /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DFF97B25F37FF5009249CF /* TransactionTableViewCell.swift */; };
+		31DFF98025F37FFF009249CF /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DFF97F25F37FFF009249CF /* ReuseIdentifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		31DEB32C25F2C3F000537757 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		31DEB32F25F2C40F00537757 /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		31DEB33225F2C42000537757 /* AddTransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCoordinator.swift; sourceTree = "<group>"; };
+		31DFF97B25F37FF5009249CF /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		31DFF97F25F37FFF009249CF /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 		317EC4C825F2C3B1000977B2 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				31DFF97A25F37FEA009249CF /* TableView */,
 				31AC83EF25F2C220009C541C /* TransactionsCoordinator.swift */,
 				31AC83E925F2BDD1009C541C /* TransactionsViewController.swift */,
 				31AC83EC25F2BDFE009C541C /* TransactionsViewModel.swift */,
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				31AC83E225F2BD2D009C541C /* Coordinator.swift */,
+				31DFF97F25F37FFF009249CF /* ReuseIdentifiable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -147,6 +153,14 @@
 				31751A6D25F2DFFA00B17CAC /* BTCRate.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		31DFF97A25F37FEA009249CF /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				31DFF97B25F37FF5009249CF /* TransactionTableViewCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,10 +238,12 @@
 				319F0B5825F2D05B006CBD0C /* Account+CoreDataProperties.swift in Sources */,
 				31DEB33025F2C40F00537757 /* AddTransactionViewModel.swift in Sources */,
 				319F0B5A25F2D05B006CBD0C /* Transaction+CoreDataProperties.swift in Sources */,
+				31DFF98025F37FFF009249CF /* ReuseIdentifiable.swift in Sources */,
 				31AC83E725F2BD65009C541C /* AppCoordinator.swift in Sources */,
 				31751A6725F2DCE300B17CAC /* Category.swift in Sources */,
 				31751A6B25F2DF5700B17CAC /* Urls.swift in Sources */,
 				3175D0C625F2B97B00B0AE2D /* BudgetViewer.xcdatamodeld in Sources */,
+				31DFF97C25F37FF5009249CF /* TransactionTableViewCell.swift in Sources */,
 				31AC83F025F2C220009C541C /* TransactionsCoordinator.swift in Sources */,
 				319F0B5725F2D05B006CBD0C /* Account+CoreDataClass.swift in Sources */,
 				31DEB32D25F2C3F000537757 /* AddTransactionViewController.swift in Sources */,
