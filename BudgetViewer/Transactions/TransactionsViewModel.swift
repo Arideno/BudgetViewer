@@ -21,6 +21,9 @@ class TransactionsViewModel {
     var transactions = [Transaction]()
     var transactionSections = [DateComponents]()
     
+    var currentPage: Int = 0
+    var isLoading = false
+    
     init() {
         requestBTCRate()
         updateRateTimer = Timer.scheduledTimer(timeInterval: 60 * 60, target: self, selector: #selector(requestBTCRate), userInfo: nil, repeats: true)
@@ -35,15 +38,37 @@ class TransactionsViewModel {
         accountChanged?()
     }
     
-    func loadTransactions() {
-        transactions = CoreDataManager.shared.getAllTransactions()
-        let dates = transactions.map({ $0.date ?? Date() })
-        let components = Set(dates.map({ Calendar.current.dateComponents([.day, .month, .year], from: $0) })).sorted(by: {
-            Calendar.current.date(from: $0) ?? Date.distantFuture > Calendar.current.date(from: $1) ?? Date.distantFuture
-        })
-        transactionSections = Array(components)
-        accountChanged?()
-        transactionsChanged?()
+    func loadTransactions(isPure: Bool = false) {
+        if isPure {
+            currentPage = 0
+            transactions = []
+            transactionSections = []
+        }
+        if !self.isLoading {
+            isLoading = true
+            DispatchQueue.global().async {
+                if self.transactions.count == CoreDataManager.shared.getTransactionsCount() {
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.transactionsChanged?()
+                    }
+                    return
+                }
+                self.currentPage += 1
+                self.transactions.append(contentsOf: CoreDataManager.shared.getTransactions(limit: 20, page: self.currentPage))
+                let dates = self.transactions.map({ $0.date ?? Date() })
+                let components = Set(dates.map({ Calendar.current.dateComponents([.day, .month, .year], from: $0) })).sorted(by: {
+                    Calendar.current.date(from: $0) ?? Date.distantFuture > Calendar.current.date(from: $1) ?? Date.distantFuture
+                })
+                self.transactionSections = Array(components)
+                sleep(1)
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.accountChanged?()
+                    self.transactionsChanged?()
+                }
+            }
+        }
     }
     
     func increaseBalance(amount: Double) {

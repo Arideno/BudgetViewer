@@ -51,12 +51,6 @@ class TransactionsViewController: UIViewController {
         return tv
     }()
     
-    lazy var refreshControl: UIRefreshControl = {
-        let rc = UIRefreshControl()
-        rc.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        return rc
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -119,7 +113,7 @@ class TransactionsViewController: UIViewController {
                 textField.placeholder = "Amount"
                 textField.keyboardType = .numbersAndPunctuation
             }
-
+            
             alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
                 if let doubleValue = Double(alert.textFields![0].text ?? "") {
                     viewModel.increaseBalance(amount: doubleValue)
@@ -140,8 +134,6 @@ class TransactionsViewController: UIViewController {
     
     private func setupTableView() {
         tableView.register(TransactionTableViewCell.self, forCellReuseIdentifier: TransactionTableViewCell.identifier)
-        
-        tableView.refreshControl = refreshControl
     }
     
     // MARK: Actions
@@ -152,10 +144,6 @@ class TransactionsViewController: UIViewController {
     
     @objc private func addTransactionButtonTapped() {
         viewModel.goToAddTransaction()
-    }
-    
-    @objc private func refreshData() {
-        viewModel.loadTransactions()
     }
 }
 
@@ -181,11 +169,23 @@ extension TransactionsViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == viewModel.transactionSections.count { return "" }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         
         let date = Calendar.current.date(from: viewModel.transactionSections[section])
         
         return dateFormatter.string(from: date ?? Date())
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYOffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYOffset
+        
+        if distanceFromBottom < height && !viewModel.isLoading {
+            viewModel.loadTransactions()
+        }
     }
 }

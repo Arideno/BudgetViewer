@@ -53,7 +53,7 @@ extension TransactionsCoordinator: UINavigationControllerDelegate {
         }
         
         if let addTransactionViewController = fromViewController as? AddTransactionViewController {
-            transactionsViewModel.loadTransactions()
+            transactionsViewModel.loadTransactions(isPure: true)
             childDidFinish(addTransactionViewController.viewModel.coordinator)
         }
     }

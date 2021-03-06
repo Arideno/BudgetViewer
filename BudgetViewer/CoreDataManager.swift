@@ -86,14 +86,23 @@ class CoreDataManager {
         saveContext()
     }
     
-    func getAllTransactions() -> [Transaction] {
+    func getTransactionsCount() -> Int {
         let request: NSFetchRequest<Transaction> = Transaction.fetchRequest()
+        if let count = try? context.count(for: request) {
+            return count
+        }
+        
+        return 0
+    }
+    
+    func getTransactions(limit: Int, page: Int) -> [Transaction] {
+        let request: NSFetchRequest<Transaction> = Transaction.fetchRequest()
+        request.sortDescriptors = [.init(key: "date", ascending: false)]
+        request.fetchLimit = limit
+        request.fetchOffset = (page - 1) * limit
         
         if let transactions = try? context.fetch(request) {
-            return transactions.sorted { (l, r) -> Bool in
-                guard let lDate = l.date, let rDate = r.date else { return false }
-                return lDate.compare(rDate) == .orderedDescending
-            }
+            return transactions
         }
         
         return []
